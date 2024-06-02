@@ -34,12 +34,18 @@ def prediction_view(request):
 # focntion permettant de predire letat de l'air a laide la fonction de calcule d'index aqi 
 def predict_air_quality_view(request):
     # Load your models
+    import os
+    from django.conf import settings
+    
+    BASE_DIR = settings.BASE_DIR
+    MODEL_DIR = os.path.join(BASE_DIR, 'model')
+    
     model_paths = {
-        'pls_model': 'C:/Users/Asus/Downloads/plateform/model/pls_model.pkl',
-        'dtr_model': 'C:/Users/Asus/Downloads/plateform/model/dtr_model.pkl',
-        'lr_model': 'C:/Users/Asus/Downloads/plateform/model/lr_model.pkl',
-        'knn_model': 'C:/Users/Asus/Downloads/plateform/model/knn_model.pkl',
-        'rfr_model': 'C:/Users/Asus/Downloads/plateform/model/rfr_model.pkl',
+        'pls_model': os.path.join(MODEL_DIR, 'pls_model.pkl'),
+        'dtr_model': os.path.join(MODEL_DIR, 'dtr_model.pkl'),
+        'lr_model': os.path.join(MODEL_DIR, 'lr_model.pkl'),
+        'knn_model': os.path.join(MODEL_DIR, 'knn_model.pkl'),
+        'rfr_model': os.path.join(MODEL_DIR, 'rfr_model.pkl'),
     }
     import joblib
 
