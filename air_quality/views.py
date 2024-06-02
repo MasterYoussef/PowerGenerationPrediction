@@ -40,7 +40,6 @@ def predict_air_quality_view(request):
         'lr_model': 'C:/Users/Asus/Downloads/plateform/model/lr_model.pkl',
         'knn_model': 'C:/Users/Asus/Downloads/plateform/model/knn_model.pkl',
         'rfr_model': 'C:/Users/Asus/Downloads/plateform/model/rfr_model.pkl',
-        'rnn_model': 'C:/Users/Asus/Downloads/plateform/model/rnn_model.h5'
     }
     import tensorflow as tf
     import joblib
@@ -50,7 +49,6 @@ def predict_air_quality_view(request):
     lr_model = joblib.load(model_paths['lr_model'])
     knn_model = joblib.load(model_paths['knn_model'])
     rfr_model = joblib.load(model_paths['rfr_model'])
-    rnn_model = tf.keras.models.load_model(model_paths['rnn_model'])
 
     if request.method == 'POST':
         # Retrieve form data
@@ -70,11 +68,6 @@ def predict_air_quality_view(request):
         }
         df = pd.DataFrame(data)
 
-        # Convertit le DataFrame en tensor
-        data = tf.convert_to_tensor(df.values, dtype=tf.float32)
-
-        # Ajoute une dimension
-        data = tf.expand_dims(data, axis=1)  # La forme devient (nombre_d'échantillons, 1, nombre_de_features)
 
         # Make predictions
         prediction_results = {
@@ -87,9 +80,7 @@ def predict_air_quality_view(request):
             'prediction_result_knn': knn_model.predict(df)[0],
             'r2_score_knn': '86.9 %',
             'prediction_result_rfr': rfr_model.predict(df)[0],
-            'r2_score_rfr': '99 %',
-            'prediction_result_rnn': rnn_model.predict(data)[0],
-            'r2_score_rnn': '98.4 %'
+            'r2_score_rfr': '99 %'
         }
 
         # Render the results to the template
