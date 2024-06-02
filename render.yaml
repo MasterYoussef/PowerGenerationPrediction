@@ -11,6 +11,7 @@ services:
     runtime: python
     buildCommand: "./build.sh"
     startCommand: "python -m gunicorn air_quality.asgi:application -k uvicorn.workers.UvicornWorker"
+    pythonVersion: 3.12
     envVars:
       - key: DATABASE_URL
         fromDatabase:
