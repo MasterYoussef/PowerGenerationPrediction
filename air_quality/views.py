@@ -41,7 +41,6 @@ def predict_air_quality_view(request):
         'knn_model': 'C:/Users/Asus/Downloads/plateform/model/knn_model.pkl',
         'rfr_model': 'C:/Users/Asus/Downloads/plateform/model/rfr_model.pkl',
     }
-    import tensorflow as tf
     import joblib
 
     pls_model = joblib.load(model_paths['pls_model'])
