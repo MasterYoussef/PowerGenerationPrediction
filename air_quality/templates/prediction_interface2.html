@@ -102,7 +102,10 @@
     </div>
 
     <div class="form-container">
-        <!-- Boutons pour chaque modèle avec des résultats intégrés directement -->
+        <button onclick="toggleResult('rfr')" class="model-button">RFR</button>
+        <div id="rfr-result" class="result-container">
+            <p>{{ prediction_result_rfr }} (R²: {{ r2_score_rfr }})</p>
+        </div>
 
     </div>
 
