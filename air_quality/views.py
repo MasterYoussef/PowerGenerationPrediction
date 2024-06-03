@@ -49,9 +49,7 @@ def predict_air_quality_view(request):
     }
     import joblib
 
-    pls_model = joblib.load(model_paths['pls_model'])
-    dtr_model = joblib.load(model_paths['dtr_model'])
-    rfr_model = joblib.load(model_paths['rfr_model'])
+
 
     if request.method == 'POST':
         # Retrieve form data
@@ -74,12 +72,7 @@ def predict_air_quality_view(request):
 
         # Make predictions
         prediction_results = {
-            'prediction_result_pls': pls_model.predict(df)[0],
-            'r2_score_pls': '97.7 %',
-            'prediction_result_dtr': dtr_model.predict(df)[0],
-            'r2_score_dtr': '98.5 %',
-            'prediction_result_rfr': rfr_model.predict(df)[0],
-            'r2_score_rfr': '99 %'
+            
         }
 
         # Render the results to the template
