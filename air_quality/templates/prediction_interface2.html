@@ -103,19 +103,7 @@
 
     <div class="form-container">
         <!-- Boutons pour chaque modèle avec des résultats intégrés directement -->
-        <button onclick="toggleResult('PLS')" class="model-button">PLS</button>
-        <div id="PLS-result" class="result-container">
-            <p>{{ prediction_result_pls }} (R²: {{ r2_score_pls }})</p>
-        </div>
 
-        <button onclick="toggleResult('DTR')" class="model-button">DTR</button>
-        <div id="DTR-result" class="result-container">
-            <p>{{ prediction_result_dtr }} (R²: {{ r2_score_dtr }})</p>
-        </div>
-        <button onclick="toggleResult('rfr')" class="model-button">RFR</button>
-        <div id="rfr-result" class="result-container">
-            <p>{{ prediction_result_rfr }} (R²: {{ r2_score_rfr }})</p>
-        </div>
     </div>
 
     <script>
