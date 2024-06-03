@@ -48,8 +48,11 @@ def predict_air_quality_view(request):
         'rfr_model': os.path.join(MODEL_DIR, 'rfr_model.pkl'),
     }
     import joblib
-    rfr_model = joblib.load(model_paths['rfr_model'])
+    
     pls_model = joblib.load(model_paths['pls_model'])
+    dtr_model = joblib.load(model_paths['dtr_model'])
+    lr_model = joblib.load(model_paths['lr_model'])
+    knn_model = joblib.load(model_paths['knn_model'])
 
     if request.method == 'POST':
         # Retrieve form data
@@ -74,8 +77,12 @@ def predict_air_quality_view(request):
         prediction_results = {
             'prediction_result_pls': pls_model.predict(df)[0],
             'r2_score_pls': '97.7 %',
-            'prediction_result_rfr': rfr_model.predict(df)[0],
-            'r2_score_rfr': '99 %'
+            'prediction_result_dtr': dtr_model.predict(df)[0],
+            'r2_score_dtr': '98.5 %',
+            'prediction_result_lr': lr_model.predict(df)[0],
+            'r2_score_lr': '98 %',
+            'prediction_result_knn': knn_model.predict(df)[0],
+            'r2_score_knn': '86.9 %',
             
         }
 
